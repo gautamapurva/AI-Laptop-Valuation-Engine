@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Laptop Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MacBook or ThinkPad?</h1>
+            <p>Enter specifications to estimate the market value.</p>
+        </header>
+
+        <form action="/predict" method="POST" class="prediction-form">
+            
+            <div class="input-group">
+                <label>Brand</label>
+                <select name="brand" required>
+                    <option value="Apple">Apple</option>
+                    <option value="HP">HP</option>
+                    <option value="Lenovo">Lenovo</option>
+                    <option value="Dell">Dell</option>
+                    <option value="Asus">Asus</option>
+                    <option value="Acer">Acer</option>
+                    <option value="MSI">MSI</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>RAM (GB)</label>
+                <select name="ram" required>
+                    <option value="8">8 GB</option>
+                    <option value="16">16 GB</option>
+                    <option value="32">32 GB</option>
+                    <option value="64">64 GB</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Storage (GB)</label>
+                <select name="rom" required>
+                    <option value="256">256 GB</option>
+                    <option value="512">512 GB</option>
+                    <option value="1024">1 TB</option>
+                    <option value="2048">2 TB</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>CPU Brand</label>
+                <select name="cpu" required>
+                    <option value="Intel">Intel</option>
+                    <option value="AMD">AMD</option>
+                    <option value="Mac">Apple Silicon</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>GPU Brand</label>
+                <select name="gpu" required>
+                    <option value="Intel">Intel</option>
+                    <option value="AMD">AMD</option>
+                    <option value="Nvidia">Nvidia</option>
+                    <option value="Mac">Apple</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Screen Sharpness (PPI)</label>
+                <input type="number" name="ppi" value="140" min="100" max="350" required>
+            </div>
+
+            <button type="submit" class="predict-btn">Predict Price</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result-box">
+            <h2>{{ prediction_text }}</h2>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
