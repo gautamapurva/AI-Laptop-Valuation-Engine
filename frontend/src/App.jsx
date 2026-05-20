@@ -113,7 +113,7 @@ function App() {
     setLoading(true);
     setPrice(null);
     try {
-      const response = await fetch('https://laptop-valuation-backend.onrender.com', {
+      const response = await fetch('https://laptop-valuation-backend.onrender.com/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
